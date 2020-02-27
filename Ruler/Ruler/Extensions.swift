@@ -1,5 +1,5 @@
 //
-//  Unit.swift
+//  Extensions.swift
 //  Ruler
 //
 //  Created by Chad Parker on 2/26/20.
@@ -8,11 +8,6 @@
 
 import Foundation
 
-struct Unit {
-
-    let name: String
-    let isHowManyInches: Double
-    
-    var currentValue: Double = 0
+extension Notification.Name {
+     static let valueHasChanged = Notification.Name("valueHasChanged")
 }
-

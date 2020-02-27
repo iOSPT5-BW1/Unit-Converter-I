@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		630BA8BA2407848C002880CA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BA8B92407848C002880CA /* Extensions.swift */; };
 		63147F8B2407698E005889EB /* UnitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63147F8A2407698E005889EB /* UnitController.swift */; };
 		63147F8E24076A2A005889EB /* UnitsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63147F8D24076A2A005889EB /* UnitsTableViewController.swift */; };
 		63147F9024076A7C005889EB /* UnitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63147F8F24076A7C005889EB /* UnitTableViewCell.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		630BA8B92407848C002880CA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		63147F8A2407698E005889EB /* UnitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitController.swift; sourceTree = "<group>"; };
 		63147F8D24076A2A005889EB /* UnitsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsTableViewController.swift; sourceTree = "<group>"; };
 		63147F8F24076A7C005889EB /* UnitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTableViewCell.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				63147F8C24076A07005889EB /* View Controllers */,
 				6366F58024075E4700CF43B6 /* AppDelegate.swift */,
 				6366F58224075E4700CF43B6 /* SceneDelegate.swift */,
+				630BA8B92407848C002880CA /* Extensions.swift */,
 				6366F58424075E4700CF43B6 /* ViewController.swift */,
 				6366F58624075E4700CF43B6 /* Main.storyboard */,
 				6366F58924075E4900CF43B6 /* Assets.xcassets */,
@@ -169,6 +172,7 @@
 				6366F58524075E4700CF43B6 /* ViewController.swift in Sources */,
 				63147F9024076A7C005889EB /* UnitTableViewCell.swift in Sources */,
 				63147F8E24076A2A005889EB /* UnitsTableViewController.swift in Sources */,
+				630BA8BA2407848C002880CA /* Extensions.swift in Sources */,
 				6366F596240765DC00CF43B6 /* Unit.swift in Sources */,
 				6366F58124075E4700CF43B6 /* AppDelegate.swift in Sources */,
 				6366F58324075E4700CF43B6 /* SceneDelegate.swift in Sources */,
