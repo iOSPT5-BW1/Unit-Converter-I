@@ -15,4 +15,3 @@ struct Unit {
     
     var currentValue: Double = 0
 }
-
