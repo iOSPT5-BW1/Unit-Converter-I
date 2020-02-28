@@ -14,8 +14,8 @@ protocol CellDelegate {
 
 class UnitTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var unitNameLabel: UILabel!
     @IBOutlet weak var currentValueTextField: UITextField!
+    @IBOutlet weak var unitNameLabel: UILabel!
 
     var delegate: CellDelegate?
 
@@ -25,31 +25,24 @@ class UnitTableViewCell: UITableViewCell {
         }
     }
 
-    func updateViews() {
-        unitNameLabel.text = unit?.name
-    }
-
     override func awakeFromNib() {
         super.awakeFromNib()
 
         NotificationCenter.default.addObserver(forName: .valueHasChanged, object: nil, queue: nil) { notification in
-            print("\(self.unit?.name): \(notification.name): \(notification.userInfo ?? [:])")
+            guard let unit = self.unit else { return }
+            print("\(unit.name): \(notification.name): \(notification.userInfo ?? [:])")
         }
     }
 
+    func updateViews() {
+        unitNameLabel.text = unit?.name
+    }
+
     @IBAction func valueDidChange(_ sender: UITextField) {
-        //print(unitvalue.text)
         guard var unit = unit,
             let text = currentValueTextField.text,
             let value = Double(text) else { return }
-
-
         unit.currentValue = value
         delegate?.valueDidChange(unit: unit)
     }
-
-    /*
-    tell each cell to calculate
-
-     */
 }
