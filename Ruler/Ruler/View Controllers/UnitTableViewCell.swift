@@ -46,9 +46,12 @@ class UnitTableViewCell: UITableViewCell {
     @IBAction func valueDidChange(_ sender: UITextField) {
         guard let unit = unit,
             let newValueText = currentValueTextField.text,
-            let newValue = Double(newValueText),
             let unitController = unitController else { return }
 
-        unitController.setValue(newValue, for: unit)
+        if let newValue = Double(newValueText) {
+            unitController.setValue(newValue, for: unit)
+        } else {
+            unitController.setValue(0, for: unit)
+        }
     }
 }
