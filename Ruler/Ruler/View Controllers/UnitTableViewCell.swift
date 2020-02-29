@@ -24,9 +24,8 @@ class UnitTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        NotificationCenter.default.addObserver(forName: .valueHasChanged, object: nil, queue: nil) { notification in
-            guard let unit = self.unit else { return }
-            print("\(unit.name): \(notification.name): \(notification.userInfo ?? [:])")
+        NotificationCenter.default.addObserver(forName: .valueHasChanged, object: nil, queue: nil) { _ in
+            self.updateValue()
         }
     }
 
@@ -34,11 +33,20 @@ class UnitTableViewCell: UITableViewCell {
         unitNameLabel.text = unit?.name
     }
 
+    func updateValue() {
+        guard let unit = self.unit,
+            let unitController = unitController else { return }
+
+        let value = unitController.getValue(for: unit)
+        currentValueTextField.text = "\(value)"
+    }
+
     @IBAction func valueDidChange(_ sender: UITextField) {
-        guard var unit = unit,
-            let text = currentValueTextField.text,
-            let value = Double(text) else { return }
-        unit.currentValue = value
-        delegate?.valueDidChange(unit: unit)
+        guard let unit = unit,
+            let newValueText = currentValueTextField.text,
+            let newValue = Double(newValueText),
+            let unitController = unitController else { return }
+
+        unitController.setValue(newValue, for: unit)
     }
 }
