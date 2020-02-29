@@ -28,7 +28,7 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Dn-oa-Dk9">
                                                     <rect key="frame" x="0.0" y="0.0" width="194" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                     <connections>
                                                         <action selector="valueDidChange:" destination="Uk4-aK-h0X" eventType="editingChanged" id="0LJ-wY-m8N"/>
                                                     </connections>
