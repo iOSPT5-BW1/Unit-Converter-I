@@ -10,9 +10,9 @@ import Foundation
 
 class UnitController {
 
-    var units: [Unit] = [
-        Unit(name: "Inches", isHowManyInches: 1),
-        Unit(name: "Feet", isHowManyInches: 12),
-        Unit(name: "Centimeters", isHowManyInches: 0.393701)
+    let units: [Unit] = [
+        Unit(name: "inches", isHowManyInches: 1),
+        Unit(name: "feet", isHowManyInches: 12),
+        Unit(name: "cm", isHowManyInches: 0.393701)
     ]
 }
