@@ -31,6 +31,11 @@ class UnitController {
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 0
         formatter.maximumFractionDigits = 3
-        return formatter.string(from: NSNumber(value: value(for: unit))) ?? ""
+        let string = formatter.string(from: NSNumber(value: value(for: unit))) ?? ""
+        if string == "0" {
+            return ""
+        } else {
+            return string
+        }
     }
 }
