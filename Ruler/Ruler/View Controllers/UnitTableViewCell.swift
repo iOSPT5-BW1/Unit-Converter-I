@@ -8,16 +8,12 @@
 
 import UIKit
 
-protocol CellDelegate {
-    func valueDidChange(unit: Unit)
-}
-
 class UnitTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var unitNameLabel: UILabel!
     @IBOutlet weak var currentValueTextField: UITextField!
+    @IBOutlet weak var unitNameLabel: UILabel!
 
-    var delegate: CellDelegate?
+    var unitController: UnitController?
 
     var unit: Unit? {
         didSet {
@@ -25,31 +21,36 @@ class UnitTableViewCell: UITableViewCell {
         }
     }
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        NotificationCenter.default.addObserver(forName: .valueHasChanged, object: nil, queue: nil) { _ in
+            self.updateValue()
+        }
+    }
+
     func updateViews() {
         unitNameLabel.text = unit?.name
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    func updateValue() {
+        guard let unit = self.unit,
+            let unitController = unitController else { return }
 
-        NotificationCenter.default.addObserver(forName: .valueHasChanged, object: nil, queue: nil) { notification in
-            print("\(self.unit?.name): \(notification.name): \(notification.userInfo ?? [:])")
+        if !currentValueTextField.isFirstResponder { // if TextField is not editing
+            currentValueTextField.text = unitController.valueAsString(for: unit)
         }
     }
 
     @IBAction func valueDidChange(_ sender: UITextField) {
-        //print(unitvalue.text)
-        guard var unit = unit,
-            let text = currentValueTextField.text,
-            let value = Double(text) else { return }
+        guard let unit = unit,
+            let newValueText = currentValueTextField.text,
+            let unitController = unitController else { return }
 
-
-        unit.currentValue = value
-        delegate?.valueDidChange(unit: unit)
+        if let newValue = Double(newValueText) {
+            unitController.setValue(newValue, for: unit)
+        } else {
+            unitController.setValue(0, for: unit)
+        }
     }
-
-    /*
-    tell each cell to calculate
-
-     */
 }
