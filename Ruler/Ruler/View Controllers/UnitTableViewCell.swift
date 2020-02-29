@@ -37,8 +37,10 @@ class UnitTableViewCell: UITableViewCell {
         guard let unit = self.unit,
             let unitController = unitController else { return }
 
-        let value = unitController.getValue(for: unit)
-        currentValueTextField.text = "\(value)"
+        if !currentValueTextField.isFirstResponder { // if TextField is not editing
+            let value = unitController.getValue(for: unit)
+            currentValueTextField.text = String(value)
+        }
     }
 
     @IBAction func valueDidChange(_ sender: UITextField) {
