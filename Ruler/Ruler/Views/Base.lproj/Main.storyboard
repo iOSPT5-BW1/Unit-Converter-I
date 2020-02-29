@@ -64,7 +64,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Ruler" largeTitleDisplayMode="always" id="FLK-Mu-NaH">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="uDB-Wt-FeJ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="uDB-Wt-FeJ"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mUp-Y5-TPg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
