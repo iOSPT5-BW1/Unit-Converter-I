@@ -23,7 +23,14 @@ class UnitController {
         NotificationCenter.default.post(name: .valueHasChanged, object: nil)
     }
 
-    func getValue(for unit: Unit) -> Double {
+    func value(for unit: Unit) -> Double {
         return currentValueInInches / unit.isHowManyInches
+    }
+
+    func valueAsString(for unit: Unit) -> String {
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 3
+        return formatter.string(from: NSNumber(value: value(for: unit))) ?? ""
     }
 }

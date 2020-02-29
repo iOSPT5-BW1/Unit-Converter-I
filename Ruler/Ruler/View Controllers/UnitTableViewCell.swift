@@ -38,8 +38,7 @@ class UnitTableViewCell: UITableViewCell {
             let unitController = unitController else { return }
 
         if !currentValueTextField.isFirstResponder { // if TextField is not editing
-            let value = unitController.getValue(for: unit)
-            currentValueTextField.text = String(value)
+            currentValueTextField.text = unitController.valueAsString(for: unit)
         }
     }
 
