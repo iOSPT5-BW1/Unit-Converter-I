@@ -12,6 +12,4 @@ struct Unit {
 
     let name: String
     let isHowManyInches: Double
-    
-    var currentValue: Double = 0
 }

@@ -15,4 +15,6 @@ class UnitController {
         Unit(name: "feet", isHowManyInches: 12),
         Unit(name: "cm", isHowManyInches: 0.393701)
     ]
+
+    private var currentValueInInches: Double = 0
 }
