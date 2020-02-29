@@ -8,16 +8,12 @@
 
 import UIKit
 
-protocol CellDelegate {
-    func valueDidChange(unit: Unit)
-}
-
 class UnitTableViewCell: UITableViewCell {
 
     @IBOutlet weak var currentValueTextField: UITextField!
     @IBOutlet weak var unitNameLabel: UILabel!
 
-    var delegate: CellDelegate?
+    var unitController: UnitController?
 
     var unit: Unit? {
         didSet {
