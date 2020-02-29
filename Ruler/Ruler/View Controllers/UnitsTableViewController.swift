@@ -24,16 +24,7 @@ class UnitsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UnitCell", for: indexPath) as! UnitTableViewCell
 
         cell.unit = unitController.units[indexPath.row]
-        cell.delegate = self
+        cell.unitController = unitController
         return cell
-    }
-}
-
-extension UnitsTableViewController: CellDelegate {
-
-    func valueDidChange(unit: Unit) {
-        print("value changed to: \(unit.currentValue)")
-        print("value in inches:  \(unit.currentValue * unit.isHowManyInches)")
-        NotificationCenter.default.post(name: .valueHasChanged, object: nil)
     }
 }
