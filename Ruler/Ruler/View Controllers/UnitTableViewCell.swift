@@ -27,6 +27,10 @@ class UnitTableViewCell: UITableViewCell {
         NotificationCenter.default.addObserver(forName: .valueHasChanged, object: nil, queue: nil) { _ in
             self.updateValue()
         }
+
+        addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action: #selector(cellWasTapped(_:)))
+        )
     }
 
     private func updateViews() {
@@ -52,5 +56,9 @@ class UnitTableViewCell: UITableViewCell {
         } else {
             unitController.setValue(0, for: unit)
         }
+    }
+
+    @objc private func cellWasTapped(_ sender: UITapGestureRecognizer) {
+        currentValueTextField.becomeFirstResponder()
     }
 }
