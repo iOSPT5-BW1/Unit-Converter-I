@@ -29,11 +29,11 @@ class UnitTableViewCell: UITableViewCell {
         }
     }
 
-    func updateViews() {
+    private func updateViews() {
         unitNameLabel.text = unit?.name
     }
 
-    func updateValue() {
+    private func updateValue() {
         guard let unit = self.unit,
             let unitController = unitController else { return }
 
