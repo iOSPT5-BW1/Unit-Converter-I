@@ -11,9 +11,12 @@ import Foundation
 class UnitController {
 
     let units: [Unit] = [
-        Unit(name: "inches", isHowManyInches: 1),
-        Unit(name: "feet", isHowManyInches: 12),
-        Unit(name: "cm", isHowManyInches: 0.393701)
+        Unit(name: "mm", isHowManyInches: 0.0393700787, type: .metric),
+        Unit(name: "cm", isHowManyInches: 0.39370787, type: .metric),
+        Unit(name: "inches", isHowManyInches: 1, type: .imperial),
+        Unit(name: "feet", isHowManyInches: 12, type: .imperial),
+        Unit(name: "km", isHowManyInches: 39370.0787, type: .metric),
+        Unit(name: "miles", isHowManyInches: 63360, type: .imperial),
     ]
 
     private var currentValueInInches: Double = 0
