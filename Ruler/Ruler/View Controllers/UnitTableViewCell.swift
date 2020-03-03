@@ -60,5 +60,6 @@ class UnitTableViewCell: UITableViewCell {
 
     @objc private func cellWasTapped(_ sender: UITapGestureRecognizer) {
         currentValueTextField.becomeFirstResponder()
+        currentValueTextField.selectAll(nil)
     }
 }
