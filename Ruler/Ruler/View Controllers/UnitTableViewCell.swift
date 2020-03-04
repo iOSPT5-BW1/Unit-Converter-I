@@ -31,6 +31,9 @@ class UnitTableViewCell: UITableViewCell {
         addGestureRecognizer(
             UITapGestureRecognizer(target: self, action: #selector(cellWasTapped(_:)))
         )
+
+        currentValueTextField.placeholder = "0"
+        currentValueTextField.delegate = self
     }
 
     private func updateViews() {
@@ -57,5 +60,14 @@ class UnitTableViewCell: UITableViewCell {
     @objc private func cellWasTapped(_ sender: UITapGestureRecognizer) {
         currentValueTextField.becomeFirstResponder()
         currentValueTextField.selectAll(nil)
+    }
+}
+
+extension UnitTableViewCell: UITextFieldDelegate {
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.text == "-" {
+            textField.text = ""
+        }
     }
 }

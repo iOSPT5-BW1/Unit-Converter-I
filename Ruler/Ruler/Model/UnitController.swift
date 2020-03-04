@@ -48,8 +48,11 @@ class UnitController {
         formatter.minimumFractionDigits = 0
         formatter.maximumFractionDigits = 3
         let string = formatter.string(from: NSNumber(value: value(for: unit))) ?? ""
-        if string == "0" {
+        if currentValueInInches == 0 {
             return ""
+        }
+        if string == "0" { // too small to display
+            return "-"
         } else {
             return string
         }
