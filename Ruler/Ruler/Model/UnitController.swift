@@ -11,20 +11,36 @@ import Foundation
 class UnitController {
 
     let units: [Unit] = [
-        Unit(name: "inches", isHowManyInches: 1),
-        Unit(name: "feet", isHowManyInches: 12),
-        Unit(name: "cm", isHowManyInches: 0.393701)
+        Unit(name: "mm", isHowManyInches: 0.0393700787, type: .metric),
+        Unit(name: "cm", isHowManyInches: 0.39370787, type: .metric),
+        Unit(name: "inches", isHowManyInches: 1, type: .imperial),
+        Unit(name: "feet", isHowManyInches: 12, type: .imperial),
+        Unit(name: "km", isHowManyInches: 39370.0787, type: .metric),
+        Unit(name: "miles", isHowManyInches: 63360, type: .imperial),
     ]
+
+    // MARK: - State
 
     private var currentValueInInches: Double = 0
 
-    func setValue(_ newValue: Double, for unit: Unit) {
+    // MARK: - Core calculations
+
+    private func setValue(_ newValue: Double, for unit: Unit) {
         currentValueInInches = newValue * unit.isHowManyInches
         NotificationCenter.default.post(name: .valueHasChanged, object: nil)
     }
 
-    func value(for unit: Unit) -> Double {
+    private func value(for unit: Unit) -> Double {
         return currentValueInInches / unit.isHowManyInches
+    }
+
+    // MARK: - Conversions to/from string
+
+    func setValue(from newValueString: String, for unit: Unit) {
+        setValue(
+            Double(newValueString) ?? 0,
+            for: unit
+        )
     }
 
     func valueAsString(for unit: Unit) -> String {
@@ -32,8 +48,11 @@ class UnitController {
         formatter.minimumFractionDigits = 0
         formatter.maximumFractionDigits = SettingsController.decimalPlaces
         let string = formatter.string(from: NSNumber(value: value(for: unit))) ?? ""
-        if string == "0" {
+        if currentValueInInches == 0 {
             return ""
+        }
+        if string == "0" { // too small to display
+            return "-"
         } else {
             return string
         }

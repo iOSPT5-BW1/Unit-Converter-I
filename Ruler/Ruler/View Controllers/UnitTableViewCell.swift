@@ -27,13 +27,20 @@ class UnitTableViewCell: UITableViewCell {
         NotificationCenter.default.addObserver(forName: .valueHasChanged, object: nil, queue: nil) { _ in
             self.updateValue()
         }
+
+        addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action: #selector(cellWasTapped(_:)))
+        )
+
+        currentValueTextField.placeholder = "0"
+        currentValueTextField.delegate = self
     }
 
-    func updateViews() {
+    private func updateViews() {
         unitNameLabel.text = unit?.name
     }
 
-    func updateValue() {
+    private func updateValue() {
         guard let unit = self.unit,
             let unitController = unitController else { return }
 
@@ -47,10 +54,20 @@ class UnitTableViewCell: UITableViewCell {
             let newValueText = currentValueTextField.text,
             let unitController = unitController else { return }
 
-        if let newValue = Double(newValueText) {
-            unitController.setValue(newValue, for: unit)
-        } else {
-            unitController.setValue(0, for: unit)
+        unitController.setValue(from: newValueText, for: unit)
+    }
+
+    @objc private func cellWasTapped(_ sender: UITapGestureRecognizer) {
+        currentValueTextField.becomeFirstResponder()
+        currentValueTextField.selectAll(nil)
+    }
+}
+
+extension UnitTableViewCell: UITextFieldDelegate {
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.text == "-" {
+            textField.text = ""
         }
     }
 }
