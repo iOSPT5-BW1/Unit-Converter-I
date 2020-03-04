@@ -28,6 +28,7 @@ class SettingsViewController: UIViewController {
         {
         case 0:
             decimalLabel.text = "1 decimal place(s)"
+            cell.unit.text 
         case 1:
             decimalLabel.text = "2 decimal place(s)"
         case 2:
@@ -36,15 +37,4 @@ class SettingsViewController: UIViewController {
             break
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
