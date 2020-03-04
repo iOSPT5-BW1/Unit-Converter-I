@@ -30,7 +30,7 @@ class UnitController {
     func valueAsString(for unit: Unit) -> String {
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 0
-        formatter.maximumFractionDigits = 3
+        formatter.maximumFractionDigits = SettingsController.decimalPlaces
         let string = formatter.string(from: NSNumber(value: value(for: unit))) ?? ""
         if string == "0" {
             return ""
@@ -38,4 +38,11 @@ class UnitController {
             return string
         }
     }
+    
+    func filteredUnits() {
+        if SettingsController.showMetric {
+            
+        }
+    }
 }
+

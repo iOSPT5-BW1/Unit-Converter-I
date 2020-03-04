@@ -19,6 +19,7 @@
 		6366F58D24075E4900CF43B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6366F58B24075E4900CF43B6 /* LaunchScreen.storyboard */; };
 		6366F596240765DC00CF43B6 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6366F595240765DC00CF43B6 /* Unit.swift */; };
 		6A4FF1B1240DF92C007E17C2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FF1B0240DF92C007E17C2 /* SettingsViewController.swift */; };
+		6A4FF1B3240F672A007E17C2 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FF1B2240F672A007E17C2 /* SettingsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		6366F58E24075E4900CF43B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6366F595240765DC00CF43B6 /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		6A4FF1B0240DF92C007E17C2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		6A4FF1B2240F672A007E17C2 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			children = (
 				6366F595240765DC00CF43B6 /* Unit.swift */,
 				63147F8A2407698E005889EB /* UnitController.swift */,
+				6A4FF1B2240F672A007E17C2 /* SettingsController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A4FF1B3240F672A007E17C2 /* SettingsController.swift in Sources */,
 				63147F9024076A7C005889EB /* UnitTableViewCell.swift in Sources */,
 				63147F8E24076A2A005889EB /* UnitsTableViewController.swift in Sources */,
 				630BA8BA2407848C002880CA /* Extensions.swift in Sources */,
