@@ -25,12 +25,12 @@ class UnitController {
 
     // MARK: - Core calculations
 
-    func setValue(_ newValue: Double, for unit: Unit) {
+    private func setValue(_ newValue: Double, for unit: Unit) {
         currentValueInInches = newValue * unit.isHowManyInches
         NotificationCenter.default.post(name: .valueHasChanged, object: nil)
     }
 
-    func value(for unit: Unit) -> Double {
+    private func value(for unit: Unit) -> Double {
         return currentValueInInches / unit.isHowManyInches
     }
 
