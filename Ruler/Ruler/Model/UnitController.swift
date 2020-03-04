@@ -47,6 +47,7 @@ class UnitController {
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 0
         formatter.maximumFractionDigits = SettingsController.decimalPlaces
+        formatter.numberStyle = .decimal
         let string = formatter.string(from: NSNumber(value: value(for: unit))) ?? ""
         if currentValueInInches == 0 {
             return ""
