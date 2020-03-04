@@ -51,11 +51,7 @@ class UnitTableViewCell: UITableViewCell {
             let newValueText = currentValueTextField.text,
             let unitController = unitController else { return }
 
-        if let newValue = Double(newValueText) {
-            unitController.setValue(newValue, for: unit)
-        } else {
-            unitController.setValue(0, for: unit)
-        }
+        unitController.setValue(from: newValueText, for: unit)
     }
 
     @objc private func cellWasTapped(_ sender: UITapGestureRecognizer) {

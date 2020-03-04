@@ -19,7 +19,11 @@ class UnitController {
         Unit(name: "miles", isHowManyInches: 63360, type: .imperial),
     ]
 
+    // MARK: - State
+
     private var currentValueInInches: Double = 0
+
+    // MARK: - Core calculations
 
     func setValue(_ newValue: Double, for unit: Unit) {
         currentValueInInches = newValue * unit.isHowManyInches
@@ -28,6 +32,15 @@ class UnitController {
 
     func value(for unit: Unit) -> Double {
         return currentValueInInches / unit.isHowManyInches
+    }
+
+    // MARK: - Conversions to/from string
+
+    func setValue(from newValueString: String, for unit: Unit) {
+        setValue(
+            Double(newValueString) ?? 0,
+            for: unit
+        )
     }
 
     func valueAsString(for unit: Unit) -> String {
