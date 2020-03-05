@@ -8,12 +8,12 @@
 
 import Foundation
 
-enum UnitType {
+enum UnitTypeValue {
     case imperial(Double) // value in inches
     case metric(Double) // value in meters
 }
 
 struct Unit {
     let name: String
-    let type: UnitType
+    let type: UnitTypeValue
 }

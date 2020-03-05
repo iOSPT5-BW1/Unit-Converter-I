@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum UnitType {
+    case imperial
+    case metric
+}
+
 class UnitController {
 
     let units: [Unit] = [
@@ -22,39 +27,40 @@ class UnitController {
 
     // MARK: - State
 
-    private var currentValueInInches: Double = 0 // this is non-zero if input is an imperial unit
-    private var currentValueInMeters: Double = 0 // this is non-zero if input is a metric unit
+    private var currentValueType: UnitType = .imperial
+    private var currentValue: Double = 0
 
     // MARK: - Core calculations
 
     private func setValue(_ newValue: Double, for unit: Unit) {
         switch unit.type {
         case .imperial(let howManyInches):
-            currentValueInInches = newValue * howManyInches
-            currentValueInMeters = 0
+            currentValueType = .imperial
+            currentValue = newValue * howManyInches
         case .metric(let howManyMeters):
-            currentValueInMeters = newValue * howManyMeters
-            currentValueInInches = 0
+            currentValueType = .metric
+            currentValue = newValue * howManyMeters
         }
         NotificationCenter.default.post(name: .valueHasChanged, object: nil)
     }
 
     private func value(for unit: Unit) -> Double {
-        if currentValueInInches != 0 { // imperial
+        switch currentValueType {
+        case .imperial:
             switch unit.type {
             case .imperial(let howManyInches):
-                return currentValueInInches / howManyInches
+                return currentValue / howManyInches
             case .metric(let howManyMeters):
-                let valueInMeters = currentValueInInches * 0.0254
+                let valueInMeters = currentValue * 0.0254
                 return valueInMeters / howManyMeters
             }
-        } else { // metric
+        case .metric:
             switch unit.type {
             case .imperial(let howManyInches):
-                let valueInInches = currentValueInMeters / 0.0254
+                let valueInInches = currentValue / 0.0254
                 return valueInInches / howManyInches
             case .metric(let howManyMeters):
-                return currentValueInMeters / howManyMeters
+                return currentValue / howManyMeters
             }
         }
     }
@@ -74,7 +80,7 @@ class UnitController {
         formatter.maximumFractionDigits = SettingsController.decimalPlaces
         formatter.numberStyle = .decimal
         let string = formatter.string(from: NSNumber(value: value(for: unit))) ?? ""
-        if currentValueInInches != 0 || currentValueInMeters != 0 {
+        if currentValue != 0 {
             if string == "0" { // too small to display
                 return "-"
             } else {
