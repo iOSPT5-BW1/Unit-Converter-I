@@ -17,5 +17,13 @@ struct Unit {
 
     let name: String
     let isHowManyInches: Double
+    let isHowManyMeters: Double
     let type: UnitType
+
+    init(name: String, isHowManyInches: Double, isHowManyMeters: Double = 0, type: UnitType) {
+        self.name = name
+        self.isHowManyInches = isHowManyInches
+        self.isHowManyMeters = isHowManyMeters
+        self.type = type
+    }
 }
