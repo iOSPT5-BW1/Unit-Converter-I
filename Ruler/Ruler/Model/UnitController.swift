@@ -11,13 +11,13 @@ import Foundation
 class UnitController {
 
     let units: [Unit] = [
-        Unit(name: "mm", isHowManyInches: 0.0393700787, isHowManyMeters: 0.001, type: .metric),
-        Unit(name: "cm", isHowManyInches: 0.39370787, isHowManyMeters: 0.01, type: .metric),
-        Unit(name: "inches", isHowManyInches: 1, type: .imperial),
-        Unit(name: "feet", isHowManyInches: 12, type: .imperial),
-        Unit(name: "m", isHowManyInches: 39.3701, isHowManyMeters: 1, type: .metric),
-        Unit(name: "km", isHowManyInches: 39370.0787, isHowManyMeters: 1000, type: .metric),
-        Unit(name: "miles", isHowManyInches: 63360, type: .imperial),
+        Unit(name: "mm", type: .metric(0.001)),
+        Unit(name: "cm", type: .metric(0.01)),
+        Unit(name: "inches", type: .imperial(1)),
+        Unit(name: "feet", type: .imperial(12)),
+        Unit(name: "m", type: .metric(1)),
+        Unit(name: "km", type: .metric(1000)),
+        Unit(name: "miles", type: .imperial(63360)),
     ]
 
     // MARK: - State
@@ -29,11 +29,11 @@ class UnitController {
 
     private func setValue(_ newValue: Double, for unit: Unit) {
         switch unit.type {
-        case .imperial:
-            currentValueInInches = newValue * unit.isHowManyInches
+        case .imperial(let howManyInches):
+            currentValueInInches = newValue * howManyInches
             currentValueInMeters = 0
-        case .metric:
-            currentValueInMeters = newValue * unit.isHowManyMeters
+        case .metric(let howManyMeters):
+            currentValueInMeters = newValue * howManyMeters
             currentValueInInches = 0
         }
         NotificationCenter.default.post(name: .valueHasChanged, object: nil)
@@ -42,19 +42,19 @@ class UnitController {
     private func value(for unit: Unit) -> Double {
         if currentValueInInches != 0 { // imperial
             switch unit.type {
-            case .imperial:
-                return currentValueInInches / unit.isHowManyInches
-            case .metric:
+            case .imperial(let howManyInches):
+                return currentValueInInches / howManyInches
+            case .metric(let howManyMeters):
                 let valueInMeters = currentValueInInches * 0.0254
-                return valueInMeters / unit.isHowManyMeters
+                return valueInMeters / howManyMeters
             }
         } else { // metric
             switch unit.type {
-            case .imperial:
+            case .imperial(let howManyInches):
                 let valueInInches = currentValueInMeters / 0.0254
-                return valueInInches / unit.isHowManyInches
-            case .metric:
-                return currentValueInMeters / unit.isHowManyMeters
+                return valueInInches / howManyInches
+            case .metric(let howManyMeters):
+                return currentValueInMeters / howManyMeters
             }
         }
     }
