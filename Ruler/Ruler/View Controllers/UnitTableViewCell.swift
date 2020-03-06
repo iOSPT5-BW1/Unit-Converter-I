@@ -38,6 +38,7 @@ class UnitTableViewCell: UITableViewCell {
 
     private func updateViews() {
         unitNameLabel.text = unit?.name
+        boldLabel(false)
     }
 
     private func updateValue() {
@@ -61,6 +62,14 @@ class UnitTableViewCell: UITableViewCell {
         currentValueTextField.becomeFirstResponder()
         currentValueTextField.selectAll(nil)
     }
+
+    private func boldLabel(_ isBold: Bool) {
+        if isBold {
+            unitNameLabel.font = .boldSystemFont(ofSize: 20)
+        } else {
+            unitNameLabel.font = .systemFont(ofSize: 20)
+        }
+    }
 }
 
 extension UnitTableViewCell: UITextFieldDelegate {
@@ -69,5 +78,10 @@ extension UnitTableViewCell: UITextFieldDelegate {
         if textField.text == "-" {
             textField.text = ""
         }
+        boldLabel(true)
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        boldLabel(false)
     }
 }
