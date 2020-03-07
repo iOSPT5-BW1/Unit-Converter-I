@@ -37,7 +37,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cT5-zt-7e0">
                                                     <rect key="frame" x="234" y="0.0" width="100" height="34"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="cWR-nZ-FRh"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="cWR-nZ-FRh"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
@@ -45,16 +45,39 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copied!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56J-pf-PSd">
+                                            <rect key="frame" x="264" y="24" width="110" height="44"/>
+                                            <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJl-OD-hi6">
+                                            <rect key="frame" x="249" y="0.0" width="165" height="92"/>
+                                            <connections>
+                                                <action selector="unitWasTapped:" destination="Uk4-aK-h0X" eventType="touchUpInside" id="fY8-gU-jkV"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="jAW-qj-gLE" secondAttribute="trailing" constant="20" id="1Le-xO-6Qu"/>
                                         <constraint firstItem="jAW-qj-gLE" firstAttribute="leading" secondItem="jx2-Oy-etx" secondAttribute="leadingMargin" constant="20" id="E3c-g7-gtC"/>
+                                        <constraint firstItem="fJl-OD-hi6" firstAttribute="top" secondItem="jx2-Oy-etx" secondAttribute="top" id="KFI-ck-u59"/>
+                                        <constraint firstItem="56J-pf-PSd" firstAttribute="leading" secondItem="cT5-zt-7e0" secondAttribute="leading" constant="-10" id="PZI-dH-lfQ"/>
+                                        <constraint firstItem="fJl-OD-hi6" firstAttribute="leading" secondItem="0Dn-oa-Dk9" secondAttribute="trailing" constant="15" id="Sz3-CQ-sXb"/>
+                                        <constraint firstAttribute="bottom" secondItem="fJl-OD-hi6" secondAttribute="bottom" id="TdR-xH-xUM"/>
+                                        <constraint firstItem="56J-pf-PSd" firstAttribute="top" secondItem="cT5-zt-7e0" secondAttribute="top" constant="-5" id="Wfy-Xe-OwT"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="jAW-qj-gLE" secondAttribute="bottom" constant="18" id="abP-Mi-TIp"/>
+                                        <constraint firstItem="56J-pf-PSd" firstAttribute="bottom" secondItem="cT5-zt-7e0" secondAttribute="bottom" constant="5" id="hlT-aF-DyJ"/>
                                         <constraint firstItem="jAW-qj-gLE" firstAttribute="top" secondItem="jx2-Oy-etx" secondAttribute="topMargin" constant="18" id="ji6-vP-iO8"/>
+                                        <constraint firstItem="56J-pf-PSd" firstAttribute="trailing" secondItem="cT5-zt-7e0" secondAttribute="trailing" id="xTG-YJ-e5r"/>
+                                        <constraint firstAttribute="trailing" secondItem="fJl-OD-hi6" secondAttribute="trailing" id="xYT-Xf-p1N"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="copiedLabel" destination="56J-pf-PSd" id="dst-A9-XYr"/>
                                     <outlet property="currentValueTextField" destination="0Dn-oa-Dk9" id="n5k-fQ-EK1"/>
+                                    <outlet property="unitButton" destination="fJl-OD-hi6" id="ttc-Iw-GSh"/>
                                     <outlet property="unitNameLabel" destination="cT5-zt-7e0" id="jIg-ai-UTp"/>
                                 </connections>
                             </tableViewCell>

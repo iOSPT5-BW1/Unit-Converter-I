@@ -12,6 +12,8 @@ class UnitTableViewCell: UITableViewCell {
 
     @IBOutlet weak var currentValueTextField: UITextField!
     @IBOutlet weak var unitNameLabel: UILabel!
+    @IBOutlet weak var unitButton: UIButton!
+    @IBOutlet weak var copiedLabel: UILabel!
 
     var unitController: UnitController?
 
@@ -28,9 +30,9 @@ class UnitTableViewCell: UITableViewCell {
             self.updateValue()
         }
 
-        addGestureRecognizer(
-            UITapGestureRecognizer(target: self, action: #selector(cellWasTapped(_:)))
-        )
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(cellWasDoubleTapped(_:)))
+        doubleTap.numberOfTapsRequired = 2
+        unitButton.addGestureRecognizer(doubleTap)
 
         currentValueTextField.placeholder = "0"
         currentValueTextField.delegate = self
@@ -58,9 +60,24 @@ class UnitTableViewCell: UITableViewCell {
         unitController.setValue(from: newValueText, for: unit)
     }
 
-    @objc private func cellWasTapped(_ sender: UITapGestureRecognizer) {
+    @IBAction func unitWasTapped(_ sender: Any) {
         currentValueTextField.becomeFirstResponder()
         currentValueTextField.selectAll(nil)
+    }
+
+    @objc private func cellWasDoubleTapped(_ sender: UITapGestureRecognizer) {
+        guard let value = currentValueTextField.text,
+            !value.isEmpty else { return }
+
+        UIPasteboard.general.string = value
+
+        copiedLabel.alpha = 1.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            UIView.animate(withDuration: 0.3) {
+                self.copiedLabel.alpha = 0.0
+                self.layoutIfNeeded()
+            }
+        }
     }
 
     private func boldLabel(_ isBold: Bool) {
