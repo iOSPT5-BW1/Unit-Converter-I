@@ -20,6 +20,7 @@ class UnitController {
         Unit(name: "cm", type: .metric(0.01)),
         Unit(name: "inches", type: .imperial(1)),
         Unit(name: "feet", type: .imperial(12)),
+        Unit(name: "yards", type: .imperial(36)),
         Unit(name: "m", type: .metric(1)),
         Unit(name: "km", type: .metric(1000)),
         Unit(name: "miles", type: .imperial(63360)),
