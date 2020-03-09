@@ -10,7 +10,7 @@ import Foundation
 
 class UnitController {
 
-    let units: [Unit] = [
+    private let units: [Unit] = [
         Unit(name: "mm", isHowManyInches: 0.0393700787, type: .metric),
         Unit(name: "cm", isHowManyInches: 0.39370787, type: .metric),
         Unit(name: "inches", isHowManyInches: 1, type: .imperial),
@@ -58,9 +58,11 @@ class UnitController {
         }
     }
     
-    func filteredUnits() {
+    func filteredUnits() -> [Unit] {
         if SettingsController.showMetric {
-            
+            return units
+        } else {
+            return units.filter { $0.type == .imperial}
         }
     }
 }
