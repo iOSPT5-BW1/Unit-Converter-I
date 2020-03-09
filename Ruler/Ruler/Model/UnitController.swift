@@ -95,7 +95,7 @@ class UnitController {
         if SettingsController.showMetric {
             return units
         } else {
-            return units.filter { $0.type == .imperial}
+            return units.filter { $0.isImperial }
         }
     }
 }
