@@ -90,7 +90,7 @@
                     <navigationItem key="navigationItem" title="Ruler" largeTitleDisplayMode="always" id="FLK-Mu-NaH">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="uDB-Wt-FeJ">
                             <connections>
-                                <segue destination="DPp-Q8-b0r" kind="presentation" id="zXo-nD-lRw"/>
+                                <segue destination="DPp-Q8-b0r" kind="show" id="zXo-nD-lRw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -104,11 +104,37 @@
             <objects>
                 <viewController id="DPp-Q8-b0r" customClass="SettingsViewController" customModule="Ruler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TRc-1Y-Ghi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="H6m-qx-Q4Z">
+                                <rect key="frame" x="102" y="414" width="195" height="68.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Decimal Places" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="132" translatesAutoresizingMaskIntoConstraints="NO" id="oqa-AH-F0C">
+                                        <rect key="frame" x="39.5" y="0.0" width="116.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Lut-IJ-w7M">
+                                        <rect key="frame" x="0.0" y="37.5" width="195" height="32"/>
+                                        <segments>
+                                            <segment title="0"/>
+                                            <segment title="1"/>
+                                            <segment title="2"/>
+                                            <segment title="3"/>
+                                            <segment title="4"/>
+                                            <segment title="5"/>
+                                            <segment title="6"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="decimalChanged:" destination="DPp-Q8-b0r" eventType="valueChanged" id="iFO-AR-YQh"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="67" translatesAutoresizingMaskIntoConstraints="NO" id="9lp-tM-uh3">
-                                <rect key="frame" x="102" y="110" width="211.5" height="31"/>
+                                <rect key="frame" x="102" y="260" width="211.5" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Metric" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSC-hN-A9h">
                                         <rect key="frame" x="0.0" y="0.0" width="95.5" height="31"/>
@@ -118,51 +144,36 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mzt-uu-0y4">
                                         <rect key="frame" x="162.5" y="0.0" width="51" height="31"/>
-                                    </switch>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="H6m-qx-Q4Z">
-                                <rect key="frame" x="149" y="182" width="116.5" height="68.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Decimal Places" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="132" translatesAutoresizingMaskIntoConstraints="NO" id="oqa-AH-F0C">
-                                        <rect key="frame" x="0.0" y="0.0" width="116.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Lut-IJ-w7M">
-                                        <rect key="frame" x="17" y="37.5" width="83" height="32"/>
-                                        <segments>
-                                            <segment title="1"/>
-                                            <segment title="2"/>
-                                            <segment title="3"/>
-                                        </segments>
                                         <connections>
-                                            <action selector="decimalChanged:" destination="DPp-Q8-b0r" eventType="valueChanged" id="iFO-AR-YQh"/>
+                                            <action selector="showMetric:" destination="DPp-Q8-b0r" eventType="valueChanged" id="kC4-gt-Xe9"/>
+                                            <segue destination="p3N-vu-X8B" kind="unwind" unwindAction="unwindToRulerWithSender:" id="15C-G6-4dG"/>
                                         </connections>
-                                    </segmentedControl>
+                                    </switch>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="eDj-kh-NQr" firstAttribute="bottom" secondItem="H6m-qx-Q4Z" secondAttribute="bottom" constant="557.5" id="8xq-bp-dsC"/>
-                            <constraint firstItem="9lp-tM-uh3" firstAttribute="top" secondItem="eDj-kh-NQr" secondAttribute="top" constant="110" id="BWs-Zl-xZP"/>
-                            <constraint firstItem="H6m-qx-Q4Z" firstAttribute="top" secondItem="9lp-tM-uh3" secondAttribute="bottom" constant="41" id="DSl-DP-bYt"/>
-                            <constraint firstItem="H6m-qx-Q4Z" firstAttribute="leading" secondItem="eDj-kh-NQr" secondAttribute="leading" constant="149" id="Ee8-aF-TM7"/>
-                            <constraint firstItem="eDj-kh-NQr" firstAttribute="trailing" secondItem="H6m-qx-Q4Z" secondAttribute="trailing" constant="148.5" id="FpI-vj-73e"/>
-                            <constraint firstItem="eDj-kh-NQr" firstAttribute="trailing" secondItem="9lp-tM-uh3" secondAttribute="trailing" constant="100.5" id="ZEE-w3-yZY"/>
-                            <constraint firstItem="eDj-kh-NQr" firstAttribute="bottom" secondItem="9lp-tM-uh3" secondAttribute="bottom" constant="667" id="jkx-dS-j6y"/>
-                            <constraint firstItem="9lp-tM-uh3" firstAttribute="leading" secondItem="eDj-kh-NQr" secondAttribute="leading" constant="102" id="wrY-5M-Zsl"/>
+                            <constraint firstItem="eDj-kh-NQr" firstAttribute="trailing" secondItem="9lp-tM-uh3" secondAttribute="trailing" constant="100.5" id="63p-hA-dvH"/>
+                            <constraint firstItem="9lp-tM-uh3" firstAttribute="leading" secondItem="eDj-kh-NQr" secondAttribute="leading" constant="102" id="Awk-bQ-ihH"/>
+                            <constraint firstItem="H6m-qx-Q4Z" firstAttribute="top" secondItem="9lp-tM-uh3" secondAttribute="bottom" constant="123" id="E90-aC-zH4"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="H6m-qx-Q4Z" secondAttribute="bottom" constant="379.5" id="XEw-GQ-W57"/>
+                            <constraint firstItem="9lp-tM-uh3" firstAttribute="top" secondItem="eDj-kh-NQr" secondAttribute="top" constant="120" id="ep4-1A-yXT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="H6m-qx-Q4Z" secondAttribute="trailing" constant="97" id="hQn-aa-gZG"/>
+                            <constraint firstItem="H6m-qx-Q4Z" firstAttribute="leading" secondItem="TRc-1Y-Ghi" secondAttribute="leadingMargin" constant="82" id="ogY-Lg-rQH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eDj-kh-NQr"/>
                     </view>
+                    <navigationItem key="navigationItem" id="MTW-7T-ekO"/>
                     <connections>
                         <outlet property="decimalLabel" destination="oqa-AH-F0C" id="AOX-Rd-Ef0"/>
                         <outlet property="decimalNumber" destination="Lut-IJ-w7M" id="X28-06-u9Z"/>
+                        <outlet property="metricLabel" destination="VSC-hN-A9h" id="ypT-ct-Etm"/>
+                        <outlet property="metricSwitch" destination="mzt-uu-0y4" id="DDb-GC-yQl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pYP-bO-0gh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="p3N-vu-X8B" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2531.8840579710145" y="138.61607142857142"/>
         </scene>
