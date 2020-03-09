@@ -15,7 +15,7 @@ enum UnitType {
 
 class UnitController {
 
-    let units: [Unit] = [
+    private let units: [Unit] = [
         Unit(name: "mm", type: .metric(0.001)),
         Unit(name: "cm", type: .metric(0.01)),
         Unit(name: "inches", type: .imperial(1)),
@@ -91,9 +91,11 @@ class UnitController {
         }
     }
     
-    func filteredUnits() {
+    func filteredUnits() -> [Unit] {
         if SettingsController.showMetric {
-            
+            return units
+        } else {
+            return units.filter { $0.type == .imperial}
         }
     }
 }
