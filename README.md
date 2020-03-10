@@ -1,13 +1,12 @@
 <p align="center">
     <img src="https://raw.githubusercontent.com/iOSPT5-BW1/Unit-Converter-I/master/header.png" alt="Ruler logo" />
-</p>
-<p align="center">
+    <br>
     Quickly convert between distance measurements
 </p>
 
-![app screenshot](hero2.png)
+Ruler makes distance unit conversions simple and fast! When the app starts up, tap your unit in the list, enter a value, and instantly see the result in any other distance unit you want! If you need to paste the result in another app, just double-tap on the unit to copy the value to the clipboard!
 
-Ruler is...
+![app screenshot](hero2.png)
 
 ## MVP
 
