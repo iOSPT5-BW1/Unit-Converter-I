@@ -2,7 +2,7 @@
 
 Converts between many different units of distance measurement
 
-![app screenshot](hero.png)
+![app screenshot](hero2.png)
 
 ## MVP
 
