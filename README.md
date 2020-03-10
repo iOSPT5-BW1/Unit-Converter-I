@@ -1,5 +1,7 @@
 <p align="center">
     <img src="https://raw.githubusercontent.com/iOSPT5-BW1/Unit-Converter-I/master/header.png" alt="Ruler logo" />
+</p>
+<p align="center">
     Quickly convert between distance measurements
 </p>
 
