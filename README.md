@@ -1,8 +1,11 @@
-# Ruler
-
-Converts between many different units of distance measurement
+<p align="center">
+    <img src="https://raw.githubusercontent.com/iOSPT5-BW1/Unit-Converter-I/master/header.png" alt="Ruler logo" />
+    Quickly convert between distance measurements
+</p>
 
 ![app screenshot](hero2.png)
+
+Ruler is...
 
 ## MVP
 
